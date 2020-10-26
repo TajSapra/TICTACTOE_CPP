@@ -1,7 +1,8 @@
-#include<fstream>
 #include <iostream>
+#include<fstream>
 #include<stdio.h>
 #include<conio.h>
+#include<string>
 using namespace std;
 
 char Board [3][3];
@@ -12,13 +13,13 @@ void PrintResult();
 
 class person
 {
-	    public:
+		 string Name;
 		 int grade;
-		 char Name[30];
-		 void getdata()
-		 {
+	    public:
+		 void getdata(){
 			cout<<"Enter your name: "<<endl;
-			gets(Name);
+			cin.ignore();
+			getline(cin, Name);
 			cout<<"Enter your class: "<<endl;
 			cin>>grade;
 		 }
@@ -29,6 +30,9 @@ class person
 		 }
 };
 
+class match{
+	person a,b;
+};
 
 
 void initializeBoard()
@@ -42,8 +46,6 @@ void initializeBoard()
 	 }
 }
 
-
-
 void PrintBoard()
 {
 	 for(i=0;i<3;i++)
@@ -55,8 +57,6 @@ void PrintBoard()
 		cout<<endl;
 	 }
 }
-
-
 
 void chance()
 {
@@ -97,17 +97,9 @@ void chance()
 	}
 }
 
-
-
-
-
-
-
 int CheckTicTacToe()
 {
 	 int numX=0, numO=0, numE=0; 
-	
-
 	 for(i=0;i<3;i++)                //row check
 	 {
 		numX=0; numO=0; 
@@ -202,9 +194,6 @@ int CheckTicTacToe()
 	 
 }
 
-
-
-
 void PrintResult()
 {
 	 cout<<endl;
@@ -227,10 +216,6 @@ void PrintResult()
 
 }
 
-
-
-
-
 void append()
 {
 	cout<<"Enter the details of the winner"<<endl;
@@ -248,8 +233,6 @@ void append()
 	f1.close();
 }
 
-
-
 void display()
 {
 	person P;
@@ -266,8 +249,6 @@ void display()
 	f1.close();
 }
 
-
-
 void file()
 {
 	 cout<<"Enter the details of the winner:"<<endl;
@@ -276,10 +257,8 @@ void file()
 	 display();
 }
 
-
-
-int main()
-{
+void playmatch(){
+	result=0;
 	cout<<"Instructions:"<<endl;
 	cout<<"1) E represents empty cells."<<endl;
 	cout<<"2) First chance is of letter X."<<endl;
@@ -298,7 +277,12 @@ int main()
 	{
 		file();
 	}
-	getch();
+}
+
+int main()
+{
+	playmatch();
+	// playmatch();
 	return 0;
 }
 
